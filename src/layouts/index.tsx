@@ -1,10 +1,8 @@
 import React from 'react';
-
-import MenuLayout from '../components/Sider/index';
+import MenuLayout from './MenuLayout';
 const BasicLayout: React.FC = props => {
   return (
-    <MenuLayout {...props}/>
+    <MenuLayout {...props} />
   );
 };
-
 export default BasicLayout;

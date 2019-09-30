@@ -1,3 +1,8 @@
+/*
+ * @Date: 2019-09-06 14:47:44
+ * @LastEditors: 刘利军
+ * @LastEditTime: 2019-09-30 14:41:41
+ */
 import { IConfig, IPlugin } from 'umi-types';
 import routesConfig from './routes';
 const { routes } = routesConfig;
@@ -10,7 +15,9 @@ const plugins: IPlugin[] = [
             level: 3,
         },
         title: 'b2b-front',
-        dll: true,
+        dll: {
+            exclude: ['to', 'update']
+        },
         routes: {
             exclude: [
                 /models\//,
@@ -27,11 +34,12 @@ export default {
     plugins,
     treeShaking: true,
     hash: true,
+    history: 'hash',
     targets: {
         ie: 11,
     },
     // devtool: 'source-map',
-    routes,
+    // routes,
     ignoreMomentLocale: true,
     // less版本3以上需要开启此配置
     // lessLoaderOptions: {
@@ -40,6 +48,11 @@ export default {
     disableRedirectHoist: true,
     manifest: {
         basePath: '/',
+    },
+    base: '/',
+    publicPath: '/',
+    define: {
+        USE_MODE: process.env.NODE_ENV,
     },
     /*
     proxy: {
